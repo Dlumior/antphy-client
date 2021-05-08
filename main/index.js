@@ -12,23 +12,27 @@ app.on('ready', async () => {
   await prepareNext('./renderer')
 
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 720,
     webPreferences: {
       nodeIntegration: false,
       preload: join(__dirname, 'preload.js'),
     },
   })
 
-  const url = isDev
-    ? 'http://localhost:8000'
-    : format({
-        pathname: join(__dirname, '../renderer/out/index.html'),
-        protocol: 'file:',
-        slashes: true,
-      })
+  const prodUrl = format({
+    pathname: join(__dirname, '../renderer/out/index.html'),
+    protocol: 'file:',
+    slashes: true,
+  })
 
-  mainWindow.loadURL(url)
+  const devUrl = 'http://localhost:8000';
+
+  const sysUrl = isDev
+    ? devUrl
+    : prodUrl;
+
+  mainWindow.loadURL(sysUrl)
 })
 
 // Quit the app once all windows are closed
@@ -36,5 +40,5 @@ app.on('window-all-closed', app.quit)
 
 // listen the channel `message` and resend the received message to the renderer process
 ipcMain.on('message', (event, message) => {
-  event.sender.send('message', message)
+  event.sender.send('message', `${message} from electron`)
 })
