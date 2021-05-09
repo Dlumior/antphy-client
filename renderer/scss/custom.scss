@@ -1,0 +1,12 @@
+$primary: #e6d5b8;
+$secondary: #f0a500;
+
+$dark: #4a3933;
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

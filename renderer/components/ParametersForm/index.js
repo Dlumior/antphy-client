@@ -42,7 +42,9 @@ const ParametersForm = () => {
               </span>
               <input
                 type="number"
-                className={`form-control ${errors.alpha ? "is-invalid" : ""}`}
+                className={`form-control form-control-sm ${
+                  errors.alpha ? "is-invalid" : ""
+                }`}
                 id="alpha"
                 aria-describedby="alphaSpan alphaValidate"
                 step="0.01"
@@ -61,7 +63,9 @@ const ParametersForm = () => {
               </span>
               <input
                 type="number"
-                className={`form-control ${errors.beta ? "is-invalid" : ""}`}
+                className={`form-control form-control-sm ${
+                  errors.beta ? "is-invalid" : ""
+                }`}
                 id="beta"
                 aria-describedby="betaSpan betaValidate"
                 step="0.01"
@@ -76,11 +80,11 @@ const ParametersForm = () => {
           <div className="col">
             <div className="input-group has-validation">
               <span className="input-group-text" id="evaporationSpan">
-                Evaporation rate
+                Evaporation
               </span>
               <input
                 type="number"
-                className={`form-control ${
+                className={`form-control form-control-sm ${
                   errors.evaporation ? "is-invalid" : ""
                 }`}
                 id="evaporation"
@@ -112,7 +116,7 @@ const ParametersForm = () => {
               </span>
               <input
                 type="number"
-                className={`form-control ${
+                className={`form-control form-control-sm${
                   errors.iterations ? "is-invalid" : ""
                 }`}
                 id="iterations"
@@ -139,7 +143,9 @@ const ParametersForm = () => {
               </span>
               <input
                 type="number"
-                className={`form-control ${errors.ants ? "is-invalid" : ""}`}
+                className={`form-control form-control-sm ${
+                  errors.ants ? "is-invalid" : ""
+                }`}
                 id="ants"
                 aria-describedby="antsSpan antsValidate"
                 step="10"
@@ -163,7 +169,7 @@ const ParametersForm = () => {
               </span>
               <input
                 type="number"
-                className={`form-control ${
+                className={`form-control form-control-sm ${
                   errors.capacity ? "is-invalid" : ""
                 }`}
                 id="capacity"
@@ -187,9 +193,9 @@ const ParametersForm = () => {
       </div>
       <div>
         <div className="row justify-content-end">
-          <div className="col-6 d-flex justify-content-end">
+          <div className="col-4 d-flex justify-space-between">
             <div>
-              <button type="submit" className="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 Set default
               </button>
             </div>

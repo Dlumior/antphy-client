@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ParametersForm from "../components/ParametersForm";
+import SolutionTable from "../components/SolutionTable";
 import MainLayout from "../layout/MainLayout";
 
 const Home = () => {
@@ -47,8 +48,13 @@ const Home = () => {
       </form> */}
       <div className="container-fluid g-4 mt-5">
         <div className="row">
-          <div className="col-5">
+          <div className="col-xxl-4 col-xl-6 col-lg-7">
             <ParametersForm />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xxl-10">
+            <SolutionTable />
           </div>
         </div>
       </div>

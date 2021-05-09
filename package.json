@@ -1,9 +1,10 @@
 {
   "name": "with-electron",
-  "productName": "ElectronNext",
+  "productName": "Antphy",
   "version": "1.0.0",
   "main": "main/index.js",
   "scripts": {
+    "make-css": "sass renderer/scss/custom.scss renderer/css/styles.css",
     "clean": "rimraf dist renderer/.next renderer/out",
     "start": "electron .",
     "build": "next build renderer && next export renderer",
@@ -18,12 +19,14 @@
     ]
   },
   "devDependencies": {
+    "bootstrap": "^5.0.0",
     "electron": "^12.0.2",
     "electron-builder": "^22.10.5",
     "next": "latest",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-hook-form": "^7.4.2"
+    "react-hook-form": "^7.4.2",
+    "sass": "^1.32.12"
   },
   "dependencies": {
     "electron-is-dev": "^1.1.0",
