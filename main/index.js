@@ -1,44 +1,42 @@
 // Native
-const { join } = require('path')
-const { format } = require('url')
+const { join } = require("path");
+const { format } = require("url");
 
 // Packages
-const { BrowserWindow, app, ipcMain } = require('electron')
-const isDev = require('electron-is-dev')
-const prepareNext = require('electron-next')
+const { BrowserWindow, app, ipcMain } = require("electron");
+const isDev = require("electron-is-dev");
+const prepareNext = require("electron-next");
 
 // Prepare the renderer once the app is ready
-app.on('ready', async () => {
-  await prepareNext('./renderer')
+app.on("ready", async () => {
+  await prepareNext("./renderer");
 
   const mainWindow = new BrowserWindow({
     width: 1280,
     height: 720,
     webPreferences: {
       nodeIntegration: false,
-      preload: join(__dirname, 'preload.js'),
+      preload: join(__dirname, "preload.js"),
     },
-  })
+  });
 
   const prodUrl = format({
-    pathname: join(__dirname, '../renderer/out/index.html'),
-    protocol: 'file:',
+    pathname: join(__dirname, "../renderer/out/index.html"),
+    protocol: "file:",
     slashes: true,
-  })
+  });
 
-  const devUrl = 'http://localhost:8000';
+  const devUrl = "http://localhost:8000";
 
-  const sysUrl = isDev
-    ? devUrl
-    : prodUrl;
+  const sysUrl = isDev ? devUrl : prodUrl;
 
-  mainWindow.loadURL(sysUrl)
-})
+  mainWindow.loadURL(sysUrl);
+});
 
 // Quit the app once all windows are closed
-app.on('window-all-closed', app.quit)
+app.on("window-all-closed", app.quit);
 
 // listen the channel `message` and resend the received message to the renderer process
-ipcMain.on('message', (event, message) => {
-  event.sender.send('message', `${message} from electron`)
-})
+ipcMain.on("message", (event, message) => {
+  event.sender.send("message", `${message} from electron`);
+});

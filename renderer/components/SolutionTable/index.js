@@ -1,7 +1,7 @@
 const SolutionTable = () => {
   return (
     <div className="container-fluid mt-4 p-3 border shadow-sm">
-      <table class="table table-sm caption-top">
+      <table className="table table-sm caption-top">
         <caption>Solutions founded</caption>
         <thead className="table-dark">
           <tr>
