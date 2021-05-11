@@ -6,4 +6,10 @@ contextBridge.exposeInMainWorld("electron", {
     on: (handler) => ipcRenderer.on("message", handler),
     off: (handler) => ipcRenderer.off("message", handler),
   },
+
+  response: {
+    send: (payload) => ipcRenderer.send("response", payload),
+    on: (handler) => ipcRenderer.on("response", handler),
+    off: (handler) => ipcRenderer.off("response", handler),
+  },
 });

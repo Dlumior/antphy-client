@@ -6,6 +6,7 @@ import MainLayout from "../layout/MainLayout";
 const Home = () => {
   const [input, setInput] = useState("");
   const [message, setMessage] = useState(null);
+  const [response, setResponse] = useState(null);
 
   useEffect(() => {
     const handleMessage = (event, message) => setMessage(message);
@@ -16,47 +17,29 @@ const Home = () => {
     };
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    window.electron.message.send(input);
+  const onSubmit = (data) => {
+    data = {
+      ...data,
+      file: data?.file[0].path,
+    };
+    const send = JSON.stringify(data);
     setMessage(null);
+    window.electron.message.send(send);
   };
 
   return (
     <MainLayout>
-      {/* <h1 className="pt-2 mb-5">Hello Electron!</h1>
-
-      {message && <p>{message}</p>}
-
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label" htmlFor="inMessage">
-            Write something
-          </label>
-          <input
-            autoFocus
-            id="inMessage"
-            className="form-control"
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Send
-        </button>
-      </form> */}
+      {message && console.log(message)}
       <div className="container-fluid g-4 mt-5">
         <div className="row">
-          <div className="col-xxl-4 col-xl-6 col-lg-7">
-            <ParametersForm />
+          <div className="col-xxl-4 col-xl-12">
+            <ParametersForm onSubmit={onSubmit} />
+          </div>
+          <div className="col">
+            <SolutionTable solutions={message} />
           </div>
         </div>
-        <div className="row">
-          <div className="col-xxl-10">
-            <SolutionTable />
-          </div>
-        </div>
+        <div className="row"></div>
       </div>
     </MainLayout>
   );

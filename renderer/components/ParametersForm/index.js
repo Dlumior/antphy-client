@@ -1,14 +1,31 @@
 import { useForm } from "react-hook-form";
 
-const ParametersForm = () => {
+const ParametersForm = (props) => {
+  const { onSubmit } = props;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const defaultValues = {
+    alpha: 0.3,
+    beta: 0.7,
+    evaporation: 0.4,
+    iterations: 20,
+    ants: 5,
+    capacity: 150,
+  };
+
+  const handleClickSetDefault = () => {
+    setValue("alpha", defaultValues.alpha);
+    setValue("beta", defaultValues.beta);
+    setValue("evaporation", defaultValues.evaporation);
+    setValue("iterations", defaultValues.iterations);
+    setValue("ants", defaultValues.ants);
+    setValue("capacity", defaultValues.capacity);
   };
 
   return (
@@ -193,14 +210,18 @@ const ParametersForm = () => {
       </div>
       <div>
         <div className="row justify-content-end">
-          <div className="col-4 d-flex justify-space-between">
+          <div className="col-4 d-flex justify-content-end">
             <div>
-              <button type="button" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleClickSetDefault}
+              >
                 Set default
               </button>
             </div>
           </div>
-          <div className="col-1 d-flex justify-content-end">
+          <div className="col-xxl-2 col-lg-1 d-flex justify-content-end">
             <div>
               <button type="submit" className="btn btn-primary">
                 Run

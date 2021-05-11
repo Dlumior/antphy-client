@@ -1,28 +1,42 @@
 const net = require("net");
+const { ipcMain } = require("electron");
 
 const options = {
   port: 6969,
 };
 
-const client = net.createConnection(options);
-client.setEncoding("utf8");
+let res = null;
 
-client.on("connect", () => {
-  console.log("Connection established");
-  client.write("Hello from node");
-  client.write("\n");
-});
+const sendMessage = (message, event) => {
+  const client = net.createConnection(options);
+  client.setEncoding("utf8");
 
-client.on("data", (data) => {
-  console.log("New message");
-  console.log(data.toString());
-  client.end("Goodbye!");
-});
+  client.on("connect", () => {
+    console.log("Connection established");
+    client.write(`${message}\n`);
+  });
 
-client.on("close", () => {
-  console.log("Connection closed");
-});
+  client.on("data", (data) => {
+    console.log("New message JSON");
+    const solution = JSON.parse(data.toString());
+    client.end();
+    res = solution.solutions;
+    event.sender.send("message", res);
+    // ipcMain.on("response", (event, message) => {
+    //   console.log(message);
+    //   event.sender.send(res);
+    // });
+  });
 
-client.on("error", (err) => {
-  console.error(err);
-});
+  client.on("close", () => {
+    console.log("Connection closed");
+  });
+
+  client.on("error", (err) => {
+    console.error(err);
+  });
+
+  return client;
+};
+
+exports.sendMessage = sendMessage;
