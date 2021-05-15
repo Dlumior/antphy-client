@@ -5,9 +5,9 @@ const options = {
   port: 6969,
 };
 
-let res = null;
-
 const sendMessage = (message, event) => {
+  let res = "";
+
   const client = net.createConnection(options);
   client.setEncoding("utf8");
 
@@ -18,18 +18,19 @@ const sendMessage = (message, event) => {
 
   client.on("data", (data) => {
     console.log("New message JSON");
-    const solution = JSON.parse(data.toString());
+    console.log(`Message length ${data.toString().length}`);
+    res += data.toString();
+    //const solution = JSON.parse(data.toString());
     client.end();
-    res = solution.solutions;
-    event.sender.send("message", res);
-    // ipcMain.on("response", (event, message) => {
-    //   console.log(message);
-    //   event.sender.send(res);
-    // });
+    //res = solution.solutions;
+    //event.sender.send("message", res);
   });
 
   client.on("close", () => {
     console.log("Connection closed");
+    const solution = JSON.parse(res.toString());
+    const resJson = solution.solutions;
+    event.sender.send("message", resJson);
   });
 
   client.on("error", (err) => {

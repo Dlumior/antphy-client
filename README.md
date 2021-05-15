@@ -1,19 +1,55 @@
-# Electron application example
+# Antphy client
 
-This example shows how you can use Next.js inside an Electron application to avoid a lot of configuration. It uses the Next.js router as view and server-render to speed up the initial render of the application.
+This is the client of the anthpy-app
 
-For development it's going to run an HTTP server and let Next.js handle routing. In production it uses `next export` to pre-generate HTML static files and uses them in your app instead of running an HTTP server.
+**You can find a the antphy-app [here](https://github.com/Dlumior/antphy)!**
 
-**You can find a detailed documentation about how to build Electron apps with Next.js [here](https://leo.im/2017/electron-next)!**
+## How to set up the project
 
-## How to use
+- Install the dependencies with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/)
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+  ```bash
+  npm install
+  # or
+  yarn
+  ```
 
-```bash
-npx create-next-app --example with-electron with-electron-app
-# or
-yarn create next-app --example with-electron with-electron-app
-```
+- Make the styles from the scss file
 
+  ```bash
+  npm run make-css
+  # or
+  yarn make-css
+  ```
+
+## How start the project
+
+- To start the project just run this command
+
+  ```bash
+  npm run start
+  # or
+  yarn start
+  ```
 You can create the production app using `npm run dist`.
+
+
+## How build and pack the app
+
+- To build just run. It's gonna build the NextJs project for the electron app
+
+  ```bash
+  npm run build
+  # or
+  yarn build
+  ```
+You can create the production app using `npm run dist`.
+
+- To pack the app just run this command. It's gonna make an executable of the app to the current os
+
+  ```bash
+  npm run pack-app
+  # or
+  yarn pack-app
+  ```
+
