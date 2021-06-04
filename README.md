@@ -1,6 +1,12 @@
 # Antphy client
 
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/Dlumior/antphy-client/master?color=e6d5b8&label=Version&style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/Dlumior/antphy-client?color=e6d5b8&logo=Javascript&style=for-the-badge)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Dlumior/antphy-client?color=e6d5b8&style=for-the-badge)
+
 This is the client of the anthpy-app
+
+___
 
 **You can find a the antphy-app [here](https://github.com/Dlumior/antphy)!**
 
@@ -31,8 +37,6 @@ This is the client of the anthpy-app
   # or
   yarn start
   ```
-You can create the production app using `npm run dist`.
-
 
 ## How build and pack the app
 
@@ -43,7 +47,6 @@ You can create the production app using `npm run dist`.
   # or
   yarn build
   ```
-You can create the production app using `npm run dist`.
 
 - To pack the app just run this command. It's gonna make an executable of the app to the current os
 
@@ -53,3 +56,4 @@ You can create the production app using `npm run dist`.
   yarn pack-app
   ```
 
+You can create the production app using `npm run dist`.
