@@ -1,4 +1,5 @@
 const { ipcRenderer, contextBridge } = require("electron");
+const { readFileSync } = require("fs");
 
 contextBridge.exposeInMainWorld("electron", {
   message: {
@@ -11,5 +12,10 @@ contextBridge.exposeInMainWorld("electron", {
     send: (payload) => ipcRenderer.send("response", payload),
     on: (handler) => ipcRenderer.on("response", handler),
     off: (handler) => ipcRenderer.off("response", handler),
+  },
+
+  readFile: function (path) {
+    const data = readFileSync(path, { encoding: "utf-8" });
+    return data;
   },
 });

@@ -1,5 +1,4 @@
 const net = require("net");
-const { ipcMain } = require("electron");
 
 const options = {
   port: 6969,
@@ -20,10 +19,7 @@ const sendMessage = (message, event) => {
     console.log("New message JSON");
     console.log(`Message length ${data.toString().length}`);
     res += data.toString();
-    //const solution = JSON.parse(data.toString());
     client.end();
-    //res = solution.solutions;
-    //event.sender.send("message", res);
   });
 
   client.on("close", () => {

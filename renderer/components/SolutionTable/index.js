@@ -5,7 +5,10 @@ const SolutionTable = (props) => {
   const [prog, setProg] = useState(100);
 
   return (
-    <div className="container-fluid mt-xl-4 mt-xxl-0 p-3 border shadow-lg">
+    <div
+      style={{ height: "25rem" }}
+      className="container-fluid mt-xl-4 mt-xxl-0 p-3 border shadow-lg overflow-auto"
+    >
       {!solutions && (
         <>
           <div className="progress">

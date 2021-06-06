@@ -1,0 +1,312 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "posX": 0,
+            "posY": 0,
+            "demand": 0,
+            "urgency": 1,
+            "name": "DEPOT"
+        },
+        {
+            "id": 1,
+            "posX": 22,
+            "posY": 26,
+            "demand": 33,
+            "urgency": 2,
+            "name": "CIUDAD 1"
+        },
+        {
+            "id": 2,
+            "posX": 13,
+            "posY": 4,
+            "demand": 17,
+            "urgency": 1,
+            "name": "CIUDAD 2"
+        },
+        {
+            "id": 3,
+            "posX": 17,
+            "posY": 11,
+            "demand": 41,
+            "urgency": 3,
+            "name": "CIUDAD 3"
+        },
+        {
+            "id": 4,
+            "posX": 1,
+            "posY": 25,
+            "demand": 49,
+            "urgency": 1,
+            "name": "CIUDAD 4"
+        },
+        {
+            "id": 5,
+            "posX": 18,
+            "posY": 11,
+            "demand": 37,
+            "urgency": 2,
+            "name": "CIUDAD 5"
+        },
+        {
+            "id": 6,
+            "posX": 4,
+            "posY": 29,
+            "demand": 31,
+            "urgency": 2,
+            "name": "CIUDAD 6"
+        },
+        {
+            "id": 7,
+            "posX": 27,
+            "posY": 5,
+            "demand": 16,
+            "urgency": 2,
+            "name": "CIUDAD 7"
+        },
+        {
+            "id": 8,
+            "posX": 16,
+            "posY": 6,
+            "demand": 40,
+            "urgency": 3,
+            "name": "CIUDAD 8"
+        },
+        {
+            "id": 9,
+            "posX": 4,
+            "posY": 8,
+            "demand": 41,
+            "urgency": 1,
+            "name": "CIUDAD 9"
+        }
+    ],
+    "edges": [
+        {
+            "source": 0,
+            "to": [
+                {
+                    "id": 7,
+                    "time": 24
+                },
+                {
+                    "id": 2,
+                    "time": 21
+                },
+                {
+                    "id": 1,
+                    "time": 5
+                },
+                {
+                    "id": 9,
+                    "time": 22
+                },
+                {
+                    "id": 8,
+                    "time": 11
+                },
+                {
+                    "id": 4,
+                    "time": 14
+                },
+                {
+                    "id": 3,
+                    "time": 21
+                },
+                {
+                    "id": 5,
+                    "time": 13
+                },
+                {
+                    "id": 6,
+                    "time": 18
+                }
+            ]
+        },
+        {
+            "source": 1,
+            "to": [
+                {
+                    "id": 0,
+                    "time": 11
+                },
+                {
+                    "id": 5,
+                    "time": 17
+                }
+            ]
+        },
+        {
+            "source": 2,
+            "to": [
+                {
+                    "id": 4,
+                    "time": 22
+                },
+                {
+                    "id": 8,
+                    "time": 20
+                },
+                {
+                    "id": 9,
+                    "time": 9
+                },
+                {
+                    "id": 0,
+                    "time": 25
+                },
+                {
+                    "id": 7,
+                    "time": 19
+                }
+            ]
+        },
+        {
+            "source": 3,
+            "to": [
+                {
+                    "id": 2,
+                    "time": 19
+                },
+                {
+                    "id": 9,
+                    "time": 11
+                },
+                {
+                    "id": 0,
+                    "time": 11
+                },
+                {
+                    "id": 6,
+                    "time": 16
+                },
+                {
+                    "id": 8,
+                    "time": 21
+                }
+            ]
+        },
+        {
+            "source": 4,
+            "to": [
+                {
+                    "id": 0,
+                    "time": 9
+                },
+                {
+                    "id": 9,
+                    "time": 18
+                },
+                {
+                    "id": 5,
+                    "time": 11
+                },
+                {
+                    "id": 1,
+                    "time": 13
+                }
+            ]
+        },
+        {
+            "source": 5,
+            "to": [
+                {
+                    "id": 6,
+                    "time": 6
+                },
+                {
+                    "id": 4,
+                    "time": 9
+                },
+                {
+                    "id": 9,
+                    "time": 24
+                }
+            ]
+        },
+        {
+            "source": 6,
+            "to": [
+                {
+                    "id": 0,
+                    "time": 25
+                },
+                {
+                    "id": 7,
+                    "time": 8
+                },
+                {
+                    "id": 9,
+                    "time": 21
+                }
+            ]
+        },
+        {
+            "source": 7,
+            "to": [
+                {
+                    "id": 8,
+                    "time": 6
+                },
+                {
+                    "id": 3,
+                    "time": 12
+                },
+                {
+                    "id": 1,
+                    "time": 7
+                },
+                {
+                    "id": 9,
+                    "time": 22
+                },
+                {
+                    "id": 2,
+                    "time": 25
+                }
+            ]
+        },
+        {
+            "source": 8,
+            "to": [
+                {
+                    "id": 4,
+                    "time": 12
+                },
+                {
+                    "id": 1,
+                    "time": 12
+                },
+                {
+                    "id": 5,
+                    "time": 23
+                }
+            ]
+        },
+        {
+            "source": 9,
+            "to": [
+                {
+                    "id": 2,
+                    "time": 19
+                },
+                {
+                    "id": 5,
+                    "time": 8
+                },
+                {
+                    "id": 3,
+                    "time": 15
+                },
+                {
+                    "id": 8,
+                    "time": 14
+                },
+                {
+                    "id": 1,
+                    "time": 9
+                }
+            ]
+        }
+    ]
+}

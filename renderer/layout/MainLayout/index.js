@@ -2,7 +2,7 @@ const MainLayout = (props) => {
   const { children } = props;
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark">
+      <nav className="navbar sticky-top navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand " href="#">
             🐜 Antphy
