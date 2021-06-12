@@ -1,14 +1,16 @@
 import { useState } from "react";
+import secondsToHHMM from "../../utils/formatHHSS";
 
 const SolutionTable = (props) => {
-  const { solutions = null } = props;
+  const { solutions = null, handleSelect } = props;
   const [prog, setProg] = useState(100);
 
   return (
     <div
-      style={{ height: "25rem" }}
+      style={{ maxHeight: "25rem" }}
       className="container-fluid mt-xl-4 mt-xxl-0 p-3 border shadow-lg overflow-auto"
     >
+      {solutions && console.log(solutions)}
       {!solutions && (
         <>
           <div className="progress">
@@ -33,13 +35,13 @@ const SolutionTable = (props) => {
               #
             </th>
             <th scope="col" style={{ width: "20%", textAlign: "right" }}>
-              Total time
+              Total time (HH:MM)
             </th>
-            <th scope="col" style={{ width: "20%", textAlign: "right" }}>
+            {/* <th scope="col" style={{ width: "20%", textAlign: "right" }}>
               Total urgency
-            </th>
+            </th> */}
             <th scope="col" style={{ width: "20%", textAlign: "right" }}>
-              Total cost
+              Total cost (S/.)
             </th>
             <th
               scope="col"
@@ -50,6 +52,15 @@ const SolutionTable = (props) => {
             >
               General cost
             </th>
+            <th
+              scope="col"
+              style={{
+                width: "auto",
+                textAlign: "center",
+              }}
+            >
+              Paths
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -59,15 +70,33 @@ const SolutionTable = (props) => {
                 <tr key={solution.id}>
                   <th scope="row">{index + 1}</th>
                   <td className="text-end">
-                    {solution.totalCostPerHeuristic.TIME.toFixed(2)}
+                    {secondsToHHMM(
+                      solution.partialCostPerHeuristicPath.TIME.reduce(
+                        (a, b) => a + b,
+                        0
+                      )
+                    )}
+                    {/* {solution.totalCostPerHeuristic.TIME.toFixed(0)} */}
                   </td>
+                  {/* <td className="text-end">
+                    {solution.totalCostPerHeuristic.URGENCY.toFixed(0)}
+                  </td> */}
                   <td className="text-end">
-                    {solution.totalCostPerHeuristic.URGENCY.toFixed(2)}
+                    {solution.partialCostPerHeuristicPath.COST.reduce(
+                      (a, b) => a + b,
+                      0
+                    ).toFixed(0)}
                   </td>
-                  <td className="text-end">
-                    {solution.totalCostPerHeuristic.COST.toFixed(2)}
+                  <td className="text-end">{solution.totalCost.toFixed(0)}</td>
+                  <td className="text-center">
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm"
+                      onClick={() => handleSelect(solution.id)}
+                    >
+                      View paths
+                    </button>
                   </td>
-                  <td className="text-end">{solution.totalCost.toFixed(2)}</td>
                 </tr>
               );
             })}

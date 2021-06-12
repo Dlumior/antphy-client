@@ -11,11 +11,11 @@ const ParametersForm = (props) => {
   } = useForm();
 
   const defaultValues = {
-    alpha: 0.3,
-    beta: 0.7,
-    evaporation: 0.4,
-    iterations: 20,
-    ants: 5,
+    alpha: 1,
+    beta: 2.2,
+    evaporation: 0.01,
+    iterations: 100,
+    ants: 50,
     capacity: 150,
   };
 
@@ -65,7 +65,7 @@ const ParametersForm = (props) => {
                 id="alpha"
                 aria-describedby="alphaSpan alphaValidate"
                 step="0.01"
-                {...register("alpha", { required: true, min: 0.0, max: 1.0 })}
+                {...register("alpha", { required: true, min: 0.0, max: 100.0 })}
               />
               <div id="alphaValidate" className="invalid-feedback">
                 {errors.alpha?.type == "min" && "The value must be positive"}
@@ -86,7 +86,7 @@ const ParametersForm = (props) => {
                 id="beta"
                 aria-describedby="betaSpan betaValidate"
                 step="0.01"
-                {...register("beta", { required: true, min: 0.0, max: 1.0 })}
+                {...register("beta", { required: true, min: 0.0, max: 100.0 })}
               />
               <div id="betaValidate" className="invalid-feedback">
                 {errors.beta?.type == "min" && "The value must be positive"}
@@ -97,7 +97,7 @@ const ParametersForm = (props) => {
           <div className="col">
             <div className="input-group has-validation">
               <span className="input-group-text" id="evaporationSpan">
-                Evaporation
+                Rho
               </span>
               <input
                 type="number"
@@ -142,7 +142,7 @@ const ParametersForm = (props) => {
                 {...register("iterations", {
                   required: true,
                   min: 10,
-                  max: 500,
+                  max: 1000,
                 })}
               />
               <div id="iterationsValidate" className="invalid-feedback">
@@ -169,7 +169,7 @@ const ParametersForm = (props) => {
                 {...register("ants", {
                   required: true,
                   min: 1,
-                  max: 200,
+                  max: 500,
                 })}
               />
               <div id="antsValidate" className="invalid-feedback">
@@ -195,7 +195,7 @@ const ParametersForm = (props) => {
                 {...register("capacity", {
                   required: true,
                   min: 1,
-                  max: 200,
+                  max: Number.MAX_SAFE_INTEGER,
                 })}
               />
               <div id="capacityValidate" className="invalid-feedback">
