@@ -17,6 +17,8 @@ const ParametersForm = (props) => {
     iterations: 100,
     ants: 50,
     capacity: 150,
+    fuelConsumption: 0.092,
+    fuelCost: 14.048,
   };
 
   const handleClickSetDefault = () => {
@@ -26,6 +28,8 @@ const ParametersForm = (props) => {
     setValue("iterations", defaultValues.iterations);
     setValue("ants", defaultValues.ants);
     setValue("capacity", defaultValues.capacity);
+    setValue("fuelCost", defaultValues.fuelCost);
+    setValue("fuelConsumption", defaultValues.fuelConsumption);
   };
 
   return (
@@ -49,6 +53,68 @@ const ParametersForm = (props) => {
           Upload a graph in a JSON format
         </div>
       </div>
+      {/*
+      ====================================================================================
+      ====================================================================================
+      Graph factors zone
+      */}
+      <div className="mb-3">
+        <label className="form-label">Graph factors</label>
+        <div className="row">
+          <div className="col">
+            <div className="input-group has-validation">
+              <span className="input-group-text" id="fuelCostSpan">
+                Fuel cost
+              </span>
+              <input
+                type="number"
+                className={`form-control form-control-sm ${
+                  errors.fuelCost ? "is-invalid" : ""
+                }`}
+                id="fuelCost"
+                aria-describedby="fuelCostSpan fuelCostValidate"
+                step="10"
+                {...register("fuelCost", {
+                  required: true,
+                  min: 0,
+                })}
+              />
+              <div id="fuelCostValidate" className="invalid-feedback">
+                {errors.fuelCost?.type == "min" && "The value must be positive"}
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="input-group has-validation">
+              <span className="input-group-text" id="fuelConsumptionSpan">
+                Fuel consumption
+              </span>
+              <input
+                type="number"
+                className={`form-control form-control-sm ${
+                  errors.fuelConsumption ? "is-invalid" : ""
+                }`}
+                id="fuelConsumption"
+                aria-describedby="fuelConsumptionSpan fuelConsumptionValidate"
+                step="10"
+                {...register("fuelConsumption", {
+                  required: true,
+                  min: 0,
+                })}
+              />
+              <div id="fuelConsumptionValidate" className="invalid-feedback">
+                {errors.fuelConsumption?.type == "min" &&
+                  "The value must be positive"}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*
+      ====================================================================================
+      ====================================================================================
+      Path factors zone
+      */}
       <div className="mb-3">
         <label className="form-label">Path factors</label>
         <div className="row">
@@ -123,17 +189,22 @@ const ParametersForm = (props) => {
           </div>
         </div>
       </div>
+      {/*
+      ====================================================================================
+      ====================================================================================
+      Colony Factors zone
+      */}
       <div className="mb-3">
         <label className="form-label">Colony factors</label>
         <div className="row">
           <div className="col">
             <div className="input-group has-validation">
               <span className="input-group-text" id="iterationsSpan">
-                Iterations
+                Iters
               </span>
               <input
                 type="number"
-                className={`form-control form-control-sm${
+                className={`form-control form-control-sm ${
                   errors.iterations ? "is-invalid" : ""
                 }`}
                 id="iterations"
@@ -149,7 +220,7 @@ const ParametersForm = (props) => {
                 {errors.iterations?.type == "min" &&
                   "The value must be greater than 10"}
                 {errors.iterations?.type == "max" &&
-                  "The value must less than 500"}
+                  "The value must less than 1000"}
               </div>
             </div>
           </div>
@@ -208,6 +279,11 @@ const ParametersForm = (props) => {
           </div>
         </div>
       </div>
+      {/*
+      ====================================================================================
+      ====================================================================================
+      Button zone
+      */}
       <div>
         <div className="row justify-content-end">
           <div className="col-4 d-flex justify-content-end">
